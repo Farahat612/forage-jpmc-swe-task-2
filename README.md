@@ -31,19 +31,21 @@ git clone https://github.com/your-username/stock-price-monitoring-app.git
 cd stock-price-monitoring-app
 npm install
 npm start
-
+```
 
 The app will be accessible at http://localhost:3000 in your web browser.
 
-Usage
+## Usage
 Open the app in your web browser.
 Click the "Start Streaming Data" button to begin fetching real-time stock price data.
 The graph will start displaying the stock price changes as they occur.
 To stop the data streaming, click the "Stop Streaming Data" button.
-Contributing
+
+## Contributing
 Contributions are welcome! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
 
-License
+## License
 This project is licensed under the MIT License.
+
 
 
