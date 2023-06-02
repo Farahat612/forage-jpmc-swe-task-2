@@ -262,7 +262,7 @@ class App(object):
         self._data_1 = order_book(read_csv(), self._book_1, 'ABC')
         self._data_2 = order_book(read_csv(), self._book_2, 'DEF')
         self._rt_start = datetime.now()
-        self._sim_start, _, _ = next(self._data_1)
+        self._sim_start = None
         self.read_10_first_lines()
 
     @property
@@ -285,8 +285,19 @@ class App(object):
 
     def read_10_first_lines(self):
         for _ in iter(range(10)):
-            next(self._data_1)
-            next(self._data_2)
+            try:
+                self._sim_start, _, _ = next(self._data_1)
+            except StopIteration:
+                print("Error initializing data for stock ABC")
+                self._data_1 = order_book(read_csv(), self._book_1, 'ABC')
+            try:
+                self._sim_start, _, _ = next(self._data_2)
+            except StopIteration:
+                print("Error initializing data for stock DEF")
+                self._data_2 = order_book(read_csv(), self._book_2, 'DEF')
+
+    
+
 
     @route('/query')
     def handle_query(self, x):
